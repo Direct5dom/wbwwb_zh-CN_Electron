@@ -1,0 +1,55 @@
+{
+  "name": "wbwwb_zh-cn_electron",
+  "version": "0.0.1",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "servez ./src",
+    "electron": "wait-on tcp:8080 && cross-env NODE_ENV=development electron .",
+    "electron:serve": "concurrently -k \"yarn serve\" \"yarn electron\"",
+    "electron:build": "electron-builder"
+  },
+  "dependencies": {
+    "servez": "^1.14.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "electron": "^23.0.0",
+    "electron-builder": "^22.10.3",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.my-website.my-app",
+    "productName": "wbwwb_zh-cn_electron",
+    "win": {
+      "icon": "icon/icon.ico"
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "icon/**/*",
+      "electron/**/*",
+      "src/**/*"
+    ],
+    "extraFiles": [
+      {
+        "from": "icon",
+        "to": "resources",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "directories": {
+      "buildResources": "src/assets",
+      "output": "dist_electron"
+    }
+  }
+}

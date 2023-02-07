@@ -1,0 +1,3 @@
+[submodule "src"]
+	path = src
+	url = https://github.com/Direct5dom/wbwwb_zh-CN.git
